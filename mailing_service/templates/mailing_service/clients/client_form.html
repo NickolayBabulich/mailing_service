@@ -1,0 +1,42 @@
+{% extends 'mailing_service/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="mx-auto p-2 mt-5">
+        <h1 class="h3 mb-3 fw-normal">Добавление клиента:</h1>
+        <hr class="my-4">
+        <div class="row">
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <label for="id_first_name" class="form-label">Имя:</label>
+                            <input type="text" name="first_name" class="form-control" id="id_first_name"
+                                   value="" maxlength="50" required="">
+                        </div>
+                        <div class="col-sm-6">
+                            <label for="id_last_name" class="form-label">Фамилия:</label>
+                            <input type="text" name="last_name" class="form-control" id="id_last_name"
+                                   placeholder="" maxlength="50" required="">
+                        </div>
+                        <div class="col-12">
+                            <label for="id_email" class="form-label">Email:</label>
+                            <input type="email" class="form-control" name="email" id="id_email"
+                                   placeholder="you@example.com">
+                        </div>
+                        <div class="col-12">
+                            <label for="id_comment" class="form-label">Комментарий:</label>
+                            <textarea class="form-control" name="comment" cols="40" rows="10"
+                                      id="id_comment"></textarea>
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <div class="d-grid gap-2 col mx-auto">
+                        <button type="submit" class="w-100 btn btn-primary btn-lg">Сохранить</button>
+                        <a href="{% url 'index:list_clients' %}" class="w-100 btn btn-danger btn-lg g-4">Отменить</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

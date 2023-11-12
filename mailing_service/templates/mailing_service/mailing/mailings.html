@@ -1,0 +1,66 @@
+{% extends 'mailing_service/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="mx-auto p-2 mt-5">
+        <h1 class="h3 mb-3 fw-normal">Список рассылок:</h1>
+        <hr class="my-4">
+        {% if user.is_staff %}
+        {% else %}
+            <div class="d-grid gap-2 col-6 mx-auto mt-4">
+                <a href="{% url 'index:create_mailing' %}" class="btn btn-success btn-lg">Добавить рассылку</a>
+            </div>
+        {% endif %}
+        <div class="row">
+            <div class="d-grid gap-2 col mx-auto mt-4">
+                <table class="table table-hover">
+                    <tbody>
+                    <thead>
+                    <tr>
+                        <th scope="col">Клиент:</th>
+                        <th scope="col">Сообщение:</th>
+                        <th scope="col">Статус:</th>
+                        <th scope="col">Начало:</th>
+                        <th scope="col">Окончание:</th>
+                    </tr>
+                    </thead>
+                    <tr>
+                        {% for object in object_list %}
+                            <tr>
+                                <td width="230px">
+                                    {% for client in object.clients.all %}
+                                        <li>{{ client.email }}</li>
+                                    {% endfor %}
+                                </td>
+                                <td>{{ object.message }}</td>
+                                {% if object.status == 1 %}
+                                    <td>Создана</td>
+                                {% elif object.status == 2 %}
+                                    <td>Запущена</td>
+                                {% else %}
+                                    <td>Завершена</td>
+                                {% endif %}
+                                <td>{{ object.time_to_start }}</td>
+                                <td>{{ object.time_to_finish }}</td>
+                                <td>
+                                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                        <a href="{% url 'index:view_mailing' object.pk %}"
+                                           class="btn btn-primary">Подробнее</a>
+                                        {% if user.is_staff %}
+
+                                        {% else %}
+                                            <a href="{% url 'index:update_mailing' object.pk %}"
+                                               class="btn btn-success">Редактировать</a>
+                                        {% endif %}
+
+                                        <a href="{% url 'index:delete_mailing' object.pk %}"
+                                           class="btn btn-danger">Удалить</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,143 @@
+<main class="d-flex flex-nowrap">
+    <h1 class="visually-hidden">Sidebars examples</h1>
+    <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 320px;">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"
+                 class="bi bi-rocket-takeoff-fill me-2" viewBox="0 0 16 16">
+                <path d="M12.17 9.53c2.307-2.592 3.278-4.684 3.641-6.218.21-.887.214-1.58.16-2.065a3.578 3.578 0 0 0-.108-.563 2.22 2.22 0 0 0-.078-.23V.453c-.073-.164-.168-.234-.352-.295a2.35 2.35 0 0 0-.16-.045 3.797 3.797 0 0 0-.57-.093c-.49-.044-1.19-.03-2.08.188-1.536.374-3.618 1.343-6.161 3.604l-2.4.238h-.006a2.552 2.552 0 0 0-1.524.734L.15 7.17a.512.512 0 0 0 .433.868l1.896-.271c.28-.04.592.013.955.132.232.076.437.16.655.248l.203.083c.196.816.66 1.58 1.275 2.195.613.614 1.376 1.08 2.191 1.277l.082.202c.089.218.173.424.249.657.118.363.172.676.132.956l-.271 1.9a.512.512 0 0 0 .867.433l2.382-2.386c.41-.41.668-.949.732-1.526l.24-2.408Zm.11-3.699c-.797.8-1.93.961-2.528.362-.598-.6-.436-1.733.361-2.532.798-.799 1.93-.96 2.528-.361.599.599.437 1.732-.36 2.531Z"/>
+                <path d="M5.205 10.787a7.632 7.632 0 0 0 1.804 1.352c-1.118 1.007-4.929 2.028-5.054 1.903-.126-.127.737-4.189 1.839-5.18.346.69.837 1.35 1.411 1.925Z"/>
+            </svg>
+            <span class="fs-4">Mailing Service</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a href="{% url 'index:index' %}"
+                       class="{% if request.path == '/' %}active {% endif %}nav-link text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                             class="bi bi-house-fill me-2" viewBox="0 0 16 16">
+                            <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z"/>
+                            <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z"/>
+                        </svg>
+                        Главная
+                    </a>
+                </li>
+                {% if user.is_staff %}
+                {% else %}
+                    <li>
+                        <a href="{% url 'index:list_clients' %}"
+                           class="{% if 'client' in request.path %}active {% endif %}nav-link text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                 class="bi bi-file-earmark-person-fill me-2" viewBox="0 0 16 16">
+                                <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm2 5.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-.245S4 12 8 12s5 1.755 5 1.755z"/>
+                            </svg>
+                            Клиенты
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'index:list_messages' %}"
+                           class="{% if 'message' in request.path %}active {% endif %}nav-link text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                 class="bi bi-envelope-at-fill me-2" viewBox="0 0 16 16">
+                                <path d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2H2Zm-2 9.8V4.698l5.803 3.546L0 11.801Zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586l-1.239-.757ZM16 9.671V4.697l-5.803 3.546.338.208A4.482 4.482 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671Z"/>
+                                <path d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034v.21Zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791Z"/>
+                            </svg>
+                            Письма
+                        </a>
+                    </li>
+                {% endif %}
+                <li>
+                    <a href="{% url 'index:list_mailings' %}"
+                       class="{% if 'mailing' in request.path %}active {% endif %}nav-link text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                             class="bi bi-send-plus-fill me-2" viewBox="0 0 16 16">
+                            <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 1.59 2.498C8 14 8 13 8 12.5a4.5 4.5 0 0 1 5.026-4.47L15.964.686Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/>
+                            <path d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Zm-3.5-2a.5.5 0 0 0-.5.5v1h-1a.5.5 0 0 0 0 1h1v1a.5.5 0 0 0 1 0v-1h1a.5.5 0 0 0 0-1h-1v-1a.5.5 0 0 0-.5-.5Z"/>
+                        </svg>
+                        Рассылки
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'index:list_logs' %}"
+                       class="{% if request.path == '/logs/' %}active {% endif %}nav-link text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                             class="bi bi-chat-left-text-fill me-2" viewBox="0 0 16 16">
+                            <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793V2zm3.5 1a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5z"/>
+                        </svg>
+                        Логи
+                    </a>
+                </li>
+                {% if user.is_staff %}
+                    <li>
+                        <a href="{% url 'users:users_list' %}"
+                           class="{% if 'users_list' in request.path %}active {% endif %}nav-link text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                 class="bi bi-file-earmark-person-fill me-2" viewBox="0 0 16 16">
+                                <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm2 5.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-.245S4 12 8 12s5 1.755 5 1.755z"/>
+                            </svg>
+                            Пользователи
+                        </a>
+                    </li>
+                {% endif %}
+            {% else %}
+                <li class="nav-item">
+                    <a href="{% url 'index:index' %}"
+                       class="{% if request.path == '/' %}active {% endif %}nav-link text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                             class="bi bi-house-fill me-2" viewBox="0 0 16 16">
+                            <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z"/>
+                            <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z"/>
+                        </svg>
+                        Главная
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+        <hr>
+        <div class="dropdown">
+            {% if user.is_authenticated %}
+                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                   data-bs-toggle="dropdown" aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                         class="bi bi-person-square me-3 ms-3" viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                        <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z"/>
+                    </svg>
+                    <strong>{{ user.email }}</strong>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                    <li class="dropdown-item_user">Пользователь:</li>
+                    {% if user.first_name == '' and user.last_name == '' %}
+                        <li class="dropdown-item_user">Заполните профиль!</li>
+                    {% else %}
+                        <li class="dropdown-item_user">{{ user.first_name }} {{ user.last_name }}</li>
+                    {% endif %}
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="{% url 'users:profile' %}">Профиль</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="{% url 'users:logout' %}">Выход</a></li>
+                </ul>
+            {% else %}
+                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                   data-bs-toggle="dropdown" aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                         class="bi bi-person-workspace me-3 ms-3" viewBox="0 0 16 16">
+                        <path d="M4 16s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H4Zm4-5.95a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+                        <path d="M2 1a2 2 0 0 0-2 2v9.5A1.5 1.5 0 0 0 1.5 14h.653a5.373 5.373 0 0 1 1.066-2H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v9h-2.219c.554.654.89 1.373 1.066 2h.653a1.5 1.5 0 0 0 1.5-1.5V3a2 2 0 0 0-2-2H2Z"/>
+                    </svg>
+                    <strong>Авторизация</strong>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                    <li><a class="dropdown-item" href="{% url 'users:login' %}">Войти</a></li>
+                    <li><a class="dropdown-item" href="{% url 'users:register' %}">Зарегистрироваться</a></li>
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+    <div class="b-example-divider b-example-vr"></div>
+</main>

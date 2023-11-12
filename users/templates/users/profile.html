@@ -1,0 +1,23 @@
+{% extends 'mailing_service/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="mx-auto p-2 mt-5">
+        <main class="form-profile w-100 m-auto">
+            <form method="post">
+                {% csrf_token %}
+                <h1 class="h3 mb-3 fw-normal">Редактировать профиль:</h1>
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="id_first_name"
+                           name="first_name" maxlength="150" value="{{ object.first_name }}">
+                    <label for="id_first_name">Имя:</label>
+                </div>
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="id_last_name"
+                           name="last_name" maxlength="150" value="{{ object.last_name }}">
+                    <label for="id_last_name">Фамилия:</label>
+                </div>
+                <button class="btn btn-primary w-100 py-2 mt-3 btn-lg" type="submit">Сохранить</button>
+            </form>
+        </main>
+    </div>
+{% endblock %}

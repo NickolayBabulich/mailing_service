@@ -1,0 +1,33 @@
+{% extends 'mailing_service/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="mx-auto p-2 mt-5">
+        <h1 class="h3 mb-3 fw-normal">Информация о клиенте:</h1>
+        <hr class="my-4">
+        <div class="row">
+            <div class="d-grid gap-2 col mx-auto mt-3">
+                <table class="table table-hover table-striped">
+                    <tbody>
+                    <tr>
+                        <th scope="row" width="300px">Имя клиента:</th>
+                        <td>{{ object.first_name }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Фамилия клиента:</th>
+                        <td>{{ object.last_name }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Email:</th>
+                        <td>{{ object.email }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Комментарий:</th>
+                        <td>{{ object.comment }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <a href="{% url 'index:list_clients' %}" class="btn btn-primary btn-lg">Вернуться к списку клиентов</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

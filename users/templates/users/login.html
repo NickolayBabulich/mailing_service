@@ -1,0 +1,24 @@
+{% extends 'mailing_service/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="mx-auto p-2 mt-5">
+        <main class="form-signin w-100 m-auto">
+            <form method="post">
+                {% csrf_token %}
+                <h1 class="h3 mb-3 fw-normal">Вход в аккаунт:</h1>
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="id_username" placeholder="name@example.com"
+                           name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="70"
+                           required="" id="id_username">
+                    <label for="id_username">Адрес электронной почты:</label>
+                </div>
+                <div class="form-floating">
+                    <input type="password" name="password" class="form-control" autocomplete="current-password"
+                           id="id_password" placeholder="Password">
+                    <label for="id_password">Пароль:</label>
+                </div>
+                <button class="btn btn-primary w-100 py-2 mt-3 btn-lg" type="submit">Войти</button>
+            </form>
+        </main>
+    </div>
+{% endblock %}

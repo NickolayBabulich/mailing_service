@@ -1,0 +1,13 @@
+{% extends 'mailing_service/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="mx-auto p-2 mt-5">
+        <h1 class="h3 mb-3 fw-normal">Подтверждение аккаунта:</h1>
+        <hr class="my-4">
+        <main class="w-100 m-auto">
+            <p class="h4 mb-3 fw-normal">Ваш аккаунт успешно создан, но еще не активирован.</p>
+            <p class="h4 mb-3 fw-normal">На электронную почту вам было отправлено письмо со ссылкой для активации
+                аккаунта, пожалуйста перейдите в вашу почту для подтверждения аккаунта.</p>
+        </main>
+    </div>
+{% endblock %}

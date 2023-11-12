@@ -1,0 +1,47 @@
+{% extends 'mailing_service/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="mx-auto p-2 mt-5">
+        <h1 class="h3 mb-3 fw-normal">Список пользователей:</h1>
+        <hr class="my-4">
+        <div class="row">
+            <div class="d-grid gap-2 col mx-auto mt-4">
+                <table class="table table-hover">
+                    <tbody>
+                    <thead>
+                    <tr>
+                        <th scope="col">Имя:</th>
+                        <th scope="col">Фамилия:</th>
+                        <th scope="col">Email:</th>
+                        <th scope="col">Комментарий:</th>
+                    </tr>
+                    </thead>
+                    <tr>
+                        {% for object in object_list %}
+                            {% if not object.is_staff and not object.is_superuser %}
+                                <tr>
+                                    <td>{{ object.email }}</td>
+                                    <td>{{ object.first_name }}</td>
+                                    <td>{{ object.email }}</td>
+                                    {% if object.is_active %}
+                                        <td>
+                                            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                                <a href="#" class="btn btn-danger">Деактивировать</a>
+                                            </div>
+                                        </td>
+                                    {% else %}
+                                        <td>
+                                            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                                <a href="#" class="btn btn-success">Активировать</a>
+                                            </div>
+                                        </td>
+                                    {% endif %}
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

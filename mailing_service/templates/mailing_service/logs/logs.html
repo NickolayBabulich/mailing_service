@@ -1,0 +1,40 @@
+{% extends 'mailing_service/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="mx-auto p-2 mt-5">
+        <h1 class="h3 mb-3 fw-normal">Логи проведенных рассылок:</h1>
+        <hr class="my-4">
+        <div class="row">
+            <div class="d-grid gap-2 col mx-auto mt-3">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">Время</th>
+                        <th scope="col">Почта</th>
+                        <th scope="col">Попытка</th>
+                        <th scope="col">Рассылка</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for object in object_list %}
+                        <tr>
+                            <th scope="row">{{ object.time }}</th>
+                            <td>{{ object.mail }}</td>
+                            {% if object.response %}
+                                <td class="table-success">
+                                    Успешно
+                                </td>
+                            {% else %}
+                                <td class="table-danger">
+                                    Ошиька
+                                </td>
+                            {% endif %}
+                            <td>{{ object.mailing.time_to_start }} - {{ object.mailing.time_to_finish }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
