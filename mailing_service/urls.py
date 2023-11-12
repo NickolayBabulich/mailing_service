@@ -10,7 +10,7 @@ from mailing_service.views import IndexView, ClientListView, ClientCreateView, C
 app_name = MailingServiceConfig.name
 
 urlpatterns = [
-    path('', cache_page(60)(IndexView.as_view()), name='index'),
+    path('', IndexView.as_view(), name='index'),
     path('clients/', ClientListView.as_view(), name='list_clients'),
     path('client/create/', ClientCreateView.as_view(), name='create_client'),
     path('client/view/<int:pk>', ClientDetailView.as_view(), name='view_client'),

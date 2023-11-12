@@ -8,6 +8,14 @@ from mailing_service.forms import ClientForm, MessageForm, MailingForm
 class IndexView(TemplateView):
     template_name = 'mailing_service/index.html'
 
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+        context_data['total_mailings'] = Mailing.objects.all().count()
+        context_data['total_activity_mailings'] = Mailing.objects.filter(status=2).count()
+        context_data['total_clients'] = Client.objects.all().count()
+
+        return context_data
+
 
 class ClientListView(ListView):
     model = Client

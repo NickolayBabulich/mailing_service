@@ -8,18 +8,38 @@
         <div class="index-text col-6 mx-auto">
             <p>Сервис рассылок - позволяет создавать и управлять рассылками писем по заданным критериям для выбранных
                 адресатов.</p>
-            <p>
-                В данном сервисе реализованн следующий функционал:
-            <ul style="text-align: left">
-                <li>Создание адресатов рассылки</li>
-                <li>Создание писем для рассылки</li>
-                <li>Настройка времени и периодичности рассылки</li>
-                <li>Возможность создания отложенной рассылки</li>
-                <li>Логирование всех прошедших рассылок</li>
-            </ul>
-            </p>
             {% if user.is_authenticated %}
+
+                <h2 class="pb-2 border-bottom">Краткая информация:</h2>
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Количество рассылок всего:
+                        <span class="badge bg-primary rounded-pill">{{ total_mailings }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Количество активных рассылок:
+                        <span class="badge bg-primary rounded-pill">{{ total_activity_mailings }}</span>
+                    </li>
+
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Количество уникальных клиентов:
+                        <span class="badge bg-primary rounded-pill">{{ total_clients }}</span>
+                    </li>
+                </ul>
+
             {% else %}
+
+                <p>
+                    В данном сервисе реализованн следующий функционал:
+                <ul style="text-align: left">
+                    <li>Создание адресатов рассылки</li>
+                    <li>Создание писем для рассылки</li>
+                    <li>Настройка времени и периодичности рассылки</li>
+                    <li>Возможность создания отложенной рассылки</li>
+                    <li>Логирование всех прошедших рассылок</li>
+                </ul>
+                </p>
+
                 <p>Для полноценной работы сервиса вам необходимо зарегистрироваться либо авторизоваться под
                     вашим аккаунтом.</p>
                 </div>
