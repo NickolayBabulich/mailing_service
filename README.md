@@ -11,6 +11,14 @@
 - Возможность создания отложенной рассылки
 - Логирование всех прошедших рассылок
 
+## Технологии:
+
+[![Python](https://img.shields.io/badge/-Python-3776AB?style=flat&logo=python&logoColor=white)](https://www.python.org/)
+[![OOP](https://img.shields.io/badge/-OOP-FF5733?style=flat)](https://en.wikipedia.org/wiki/Object-oriented_programming) [![Django](https://img.shields.io/badge/-Django-092E20?style=flat&logo=django&logoColor=white)](https://www.djangoproject.com/)
+[![CRON](https://img.shields.io/badge/-CRON-A4320D?style=flat)](https://en.wikipedia.org/wiki/Cron)
+ [![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-336791?style=flat&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+ [![Redis](https://img.shields.io/badge/-Redis-DC382D?style=flat&logo=redis&logoColor=white)](https://redis.io/)
+
 ### Настройка сервиса:
 
 - Установлены Python версии не ниже 3.10, база данных PostgreSQL
