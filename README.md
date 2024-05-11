@@ -1,4 +1,4 @@
-# Mailing Service - Сервис рассылок (курсовой проект по Django)
+# Mailing Service - Сервис рассылок
 
 ### О проекте:
 
